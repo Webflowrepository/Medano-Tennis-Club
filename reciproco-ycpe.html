@@ -9,61 +9,11 @@
     <link rel="icon" type="image/png" href="./imagenes/Logo Medano.png">
     <link rel="stylesheet" href="./css/main.css">
     <style>
-        .page-hero {
-            min-height: 40vh;
-            display: flex;
-            align-items: flex-end;
-            padding: var(--space-xl) var(--space-md);
-            padding-top: calc(var(--space-xl) * 2 + 96px);
-            position: relative;
-            overflow: hidden;
-            background-color: var(--color-text);
-        }
-
-        .page-hero__logo {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-            margin-bottom: var(--space-md);
-            filter: brightness(0) invert(1);
-            opacity: 0.9;
-            display: block;
-        }
-
-        .page-hero__content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .page-hero__label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: rgba(250, 249, 246, 0.5);
-            margin-bottom: var(--space-sm);
-            display: block;
-        }
-
-        .page-hero__sublabel {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--color-accent);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .page-hero__title {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: var(--font-weight-light);
-            color: var(--color-bg);
-            line-height: 1.05;
-        }
-
         .page-content {
             max-width: 1000px;
             margin: 0 auto;
             padding: var(--space-xl) var(--space-md);
+            padding-top: calc(96px + var(--space-lg));
         }
 
         .reciproco-layout {
@@ -201,21 +151,15 @@
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
     </nav>
-    <section class="page-hero">
-        <div class="page-hero__content">
-            <img class="page-hero__logo" src="./imagenes/INSTITUCIONAL/CLUBES RECIPROCOS/YCPE.png"
-                alt="Yacht Club Punta del Este">
-            <span class="page-hero__sublabel">Clubs Recíprocos</span>
-            <span class="page-hero__label">El Médano Tennis Club</span>
-            <h1 class="page-hero__title">Yacht Club<br>Punta del Este</h1>
-        </div>
-    </section>
+
     <main class="page-content">
         <a href="club.html#clubs-reciprocos" class="back-link">← Volver a Clubs Recíprocos</a>
         <div class="reciproco-layout fade-up">
             <div class="reciproco-logo-col">
                 <img src="./imagenes/INSTITUCIONAL/CLUBES RECIPROCOS/YCPE.png" alt="Yacht Club Punta del Este">
-                <div class="reciproco-label">Yacht Club Punta del Este</div>
+                <h1 class="reciproco-label"
+                    style="margin:0; font-size:1.5rem; text-transform:none; letter-spacing:normal;">Yacht Club Punta del
+                    Este</h1>
             </div>
             <div class="reciproco-info">
                 <div class="vigencia"><strong>Vigencia</strong> – A confirmar</div>
@@ -237,8 +181,10 @@
             <div style="font-size: 0.8rem; color: var(--color-muted); letter-spacing: 0.05em;">Desde 1943</div>
         </div>
         <ul style="display: flex; gap: var(--space-md);">
-            <li><a href="https://www.instagram.com/clubmedano/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="https://www.facebook.com/club.elmedano" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="https://www.instagram.com/clubmedano/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </li>
+            <li><a href="https://www.facebook.com/club.elmedano" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </li>
         </ul>
     </footer>
     <a href="https://wa.me/" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg
