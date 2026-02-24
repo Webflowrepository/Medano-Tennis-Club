@@ -1,0 +1,452 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap');
+
+:root {
+    /* Paleta corregida - Warm Luxury */
+    --color-bg: #FAF9F6;
+    --color-text: #1C1C1A;
+    --color-accent: #8B3A3A;
+    --color-muted: #6B6B6B;
+
+    /* Tipografía */
+    --font-primary: 'Söhne', 'Satoshi', 'Inter', -apple-system, sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+
+    /* Espaciado (8px grid) */
+    --space-xs: 0.5rem;
+    /* 8px */
+    --space-sm: 1rem;
+    /* 16px */
+    --space-md: 2rem;
+    /* 32px */
+    --space-lg: 4rem;
+    /* 64px */
+    --space-xl: 8rem;
+    /* 128px */
+
+    /* Transiciones */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-slow: 800ms;
+}
+
+/* Base Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-regular);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv11", "ss01";
+    /* Mejora legibilidad en caso de fallback a Inter */
+    letter-spacing: -0.01em;
+    font-size: clamp(18px, 1.2vw, 22px);
+    /* Mobile-first accessibility, min 18px */
+    line-height: 1.5;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll from animations */
+}
+
+/* Base Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--font-weight-light);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 
+  Lenis Recommended CSS 
+  https://github.com/darkroomengineering/lenis
+*/
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+/* Hero Slider */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-xl) var(--space-md);
+    overflow: hidden;
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-slider__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s var(--ease-out), transform 6s linear;
+    /* Parallax sutil: zoom lento y suave */
+    transform: scale(1.05);
+    /* Inicia un poco más grande */
+}
+
+/* Efecto superposición oscura para que se lea el texto */
+.hero-slider::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Oscurecido significativamente para que resalte el texto blanco */
+    background: linear-gradient(to top, rgba(28, 28, 26, 0.95) 0%, rgba(28, 28, 26, 0.5) 50%, rgba(28, 28, 26, 0.7) 100%);
+    z-index: 1;
+}
+
+.hero-slider__image.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+/* Nav & Dropdown Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: var(--space-md);
+    z-index: 100;
+    mix-blend-mode: difference;
+    color: #FAF9F6;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: mix-blend-mode 0.3s var(--ease-out), color 0.3s var(--ease-out), background-color 0.3s var(--ease-out);
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    z-index: 102;
+    padding: var(--space-xs);
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.mobile-toggle svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+.navbar a {
+    transition: font-weight 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+    display: block;
+    padding-bottom: 4px;
+    /* Espacio para el borde en hover general */
+}
+
+.navbar>ul>li>a:hover {
+    font-weight: var(--font-weight-medium);
+    opacity: 0.8;
+}
+
+.has-dropdown {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-top: var(--space-sm);
+
+    /* Mix-blend-mode difference hace que el texto sea blanco sobre foto,
+       así que no agregamos background color al dropdown para mantener la estética limpia */
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out), visibility 0.3s;
+}
+
+.has-dropdown:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown a {
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-light);
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity 0.2s, font-weight 0.2s;
+}
+
+.dropdown a:hover {
+    opacity: 1;
+    font-weight: var(--font-weight-regular);
+}
+
+/* Service List Hover Effect */
+.service-item a:hover {
+    transform: translateX(20px);
+    color: var(--color-accent);
+}
+
+.service-item a:hover span:last-child {
+    color: var(--color-text);
+}
+
+/* Utilities */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ========================================= */
+/* WA FLOATING BUTTON                        */
+/* ========================================= */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-bg);
+    border: 1px solid rgba(28, 28, 26, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: var(--color-text);
+    transition: transform 0.4s var(--ease-out), background-color 0.4s var(--ease-out), color 0.4s var(--ease-out), border-color 0.4s;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 90px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        z-index: 9999;
+        display: flex !important;
+    }
+}
+
+.whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+    stroke: currentColor;
+    transition: transform 0.4s var(--ease-out);
+}
+
+.whatsapp-float:hover {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    border-color: var(--color-text);
+    transform: translateY(-5px);
+}
+
+.whatsapp-float:hover svg {
+    transform: scale(1.1);
+}
+
+/* ========================================= */
+/* RESPONSIVE DESIGN                         */
+/* ========================================= */
+@media screen and (max-width: 768px) {
+
+    /* Navbar móvil - Overlay Menu */
+    .navbar {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: var(--space-sm) var(--space-md) !important;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Hidden off-screen right */
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--space-md);
+        transition: right 0.6s var(--ease-out);
+        z-index: 101;
+        pointer-events: none;
+    }
+
+    .nav-links li {
+        font-size: 1.5rem;
+    }
+
+    /* Menu open state overrides */
+    .navbar.menu-open {
+        mix-blend-mode: normal;
+        color: var(--color-text);
+        background-color: var(--color-bg);
+    }
+
+    .navbar.menu-open .nav-links {
+        right: 0;
+        pointer-events: all;
+    }
+
+    /* Sub-dropdowns on mobile */
+    .has-dropdown .dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: transparent;
+        align-items: center;
+        padding-top: var(--space-xs);
+        display: none;
+        /* Hide drop by default to save space */
+    }
+
+    .navbar.menu-open .has-dropdown:active .dropdown,
+    .navbar.menu-open .has-dropdown:hover .dropdown {
+        display: flex;
+    }
+
+    .navbar.menu-open .dropdown a {
+        color: var(--color-muted);
+        text-align: center;
+        font-size: 1.1rem;
+        padding: var(--space-xs) 0;
+    }
+
+    /* Reducir padding horizontal masivo en mobile */
+    .hero,
+    .section-club,
+    .section-servicios,
+    footer {
+        padding-left: var(--space-sm) !important;
+        padding-right: var(--space-sm) !important;
+    }
+
+    /* Hero Text tweaks for mobile */
+    .hero-title {
+        font-size: 3rem !important;
+        /* Asegurar que no rompa la pantalla */
+        margin-bottom: var(--space-sm) !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem !important;
+    }
+
+    /* Layout Club Asimétrico -> Bloque Vertical en Móviles */
+    .section-club {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: auto;
+    }
+
+    .section-club>div:first-child>div {
+        padding-top: 75% !important;
+        /* Reduce height of image on mobile */
+    }
+
+    .section-club>div {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Footer -> Stack vertical centrado */
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--space-md);
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    footer ul {
+        justify-content: center;
+    }
+}

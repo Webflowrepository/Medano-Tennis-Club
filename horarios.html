@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horarios 2026 — El Médano Tennis Club</title>
+    <meta name="description" content="Consultá los horarios 2026 de canchas, clases y actividades del Club El Médano.">
+    <link href="https://api.fontshare.com" rel="preconnect">
+    <link rel="icon" type="image/png" href="./imagenes/Logo Medano.png">
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+        .page-hero {
+            min-height: 45vh;
+            display: flex;
+            align-items: flex-end;
+            padding: var(--space-xl) var(--space-md);
+            padding-top: calc(var(--space-xl) * 2 + 96px);
+            position: relative;
+            overflow: hidden;
+            background-color: var(--color-text);
+        }
+
+        .page-hero__bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('./imagenes/Horarios.png');
+            background-size: cover;
+            background-position: center 40%;
+            opacity: 0.3;
+        }
+
+        .page-hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .page-hero__label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(250, 249, 246, 0.6);
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+
+        .page-hero__title {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: var(--font-weight-light);
+            color: var(--color-bg);
+            line-height: 1.0;
+        }
+
+        .page-hero__subtitle {
+            font-size: 1rem;
+            color: rgba(250, 249, 246, 0.5);
+            margin-top: var(--space-sm);
+            font-style: italic;
+        }
+
+        .page-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        /* Logo en la página de horarios */
+        .horarios-logo-banner {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg) 0;
+            border-bottom: 1px solid rgba(28, 28, 26, 0.1);
+            margin-bottom: var(--space-lg);
+        }
+
+        .horarios-logo-banner img {
+            height: 80px;
+            width: auto;
+        }
+
+        .horarios-logo-banner__text h2 {
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-weight: var(--font-weight-light);
+            color: var(--color-text);
+        }
+
+        .horarios-logo-banner__text p {
+            font-size: 0.9rem;
+            color: var(--color-muted);
+            margin-top: 4px;
+        }
+
+        /* Tabla de Horarios */
+        .horarios-section {
+            margin-bottom: var(--space-xl);
+        }
+
+        .horarios-section__title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid rgba(28, 28, 26, 0.08);
+        }
+
+        .horarios-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .horarios-table th {
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-muted);
+            padding: var(--space-xs) var(--space-sm);
+            background-color: rgba(28, 28, 26, 0.03);
+            border-bottom: 1px solid rgba(28, 28, 26, 0.08);
+        }
+
+        .horarios-table td {
+            padding: var(--space-sm);
+            font-size: 1rem;
+            color: var(--color-text);
+            border-bottom: 1px solid rgba(28, 28, 26, 0.06);
+            vertical-align: top;
+        }
+
+        .horarios-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .horarios-table tr:hover td {
+            background-color: rgba(28, 28, 26, 0.02);
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background-color: rgba(139, 58, 58, 0.1);
+            color: var(--color-accent);
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero__title {
+                font-size: 3rem;
+            }
+
+            .horarios-logo-banner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .horarios-table th,
+            .horarios-table td {
+                padding: var(--space-xs);
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="./imagenes/Logo%20Medano.png" alt="Médano Tennis Club Logo"
+                    style="height: 96px; width: auto; display: block; object-fit: contain;">
+            </a>
+        </div>
+
+        <button class="mobile-toggle" aria-label="Menu" aria-expanded="false">
+            <svg class="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M4 6H20M4 12H20M4 18H20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display:none;">
+                <path d="M18 6L6 18M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+
+        <ul class="nav-links">
+            <li class="has-dropdown">
+                <a href="club.html">Institucional</a>
+                <ul class="dropdown">
+                    <li><a href="club.html#clubs-reciprocos">Clubs recíprocos</a></li>
+                </ul>
+            </li>
+            <li><a href="horarios.html">Horarios</a></li>
+            <li class="has-dropdown">
+                <a href="tenis.html">Tenis</a>
+                <ul class="dropdown">
+                    <li class="has-subdropdown"><a href="tenis.html#torneos">Torneos de Tenis</a>
+                        <ul class="subdropdown">
+                            <li><a href="tenis.html#torneos">Torneo Doble Americano Mixto</a></li>
+                            <li><a href="tenis.html#torneos">Torneo Single Caballeros</a></li>
+                            <li><a href="tenis.html#torneos">Torneo Single Damas</a></li>
+                            <li><a href="tenis.html#torneos">Torneo Dobles Caballeros y Dobles Damas</a></li>
+                            <li><a href="tenis.html#torneos">Torneo Copa Rolex</a></li>
+                            <li><a href="tenis.html#torneos">Torneo Doble Mixto</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="reglamento.html">Reglamento de torneos</a></li>
+                    <li><a href="profesores.html">Profesores</a></li>
+                </ul>
+            </li>
+            <li class="has-dropdown">
+                <a href="servicios.html">Servicios</a>
+                <ul class="dropdown">
+                    <li><a href="https://drive.google.com/file/d/14ZWQT4-GEa2u9OkBewZb8yuzyr5z1ufx/view" target="_blank"
+                            rel="noopener noreferrer">Restaurante</a></li>
+                    <li><a href="kids.html">Kids</a></li>
+                    <li><a href="gimnasio.html">Gimnasio</a></li>
+                    <li><a href="pilates.html">Pilates</a></li>
+                    <li><a href="yoga.html">Yoga</a></li>
+                    <li><a href="paddle.html">Paddle</a></li>
+                    <li><a href="bridge.html">Bridge</a></li>
+                    <li><a href="ajedrez.html">Ajedrez</a></li>
+                </ul>
+            </li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="page-hero__bg"></div>
+        <div class="page-hero__content">
+            <span class="page-hero__label">El Médano Tennis Club</span>
+            <h1 class="page-hero__title">Horarios</h1>
+            <p class="page-hero__subtitle">Temporada 2026</p>
+        </div>
+    </section>
+
+    <!-- Contenido -->
+    <main class="page-content">
+
+        <!-- Banner con logo -->
+        <div class="horarios-logo-banner fade-up">
+            <img src="./imagenes/Logo%20Medano.png" alt="Logo El Médano">
+            <div class="horarios-logo-banner__text">
+                <h2>Horarios 2026</h2>
+                <p>Temporada oficial del Club El Médano Tennis Club</p>
+            </div>
+        </div>
+
+        <!-- Tenis -->
+        <div class="horarios-section fade-up">
+            <div class="horarios-section__title">Tenis — Canchas y Alquileres</div>
+            <table class="horarios-table">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Días</th>
+                        <th>Horario</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alquiler libre de canchas</td>
+                        <td>Lun – Dom</td>
+                        <td>08:00 – 22:00</td>
+                        <td>Reserva previa recomendada</td>
+                    </tr>
+                    <tr>
+                        <td>Clases grupales (adultos)</td>
+                        <td>Mar / Jue / Sáb</td>
+                        <td>09:00 – 11:00</td>
+                        <td><span class="badge">Con profesor</span></td>
+                    </tr>
+                    <tr>
+                        <td>Clases grupales (infantil)</td>
+                        <td>Mié / Vie / Sáb</td>
+                        <td>10:00 – 12:00</td>
+                        <td><span class="badge">Con profesor</span></td>
+                    </tr>
+                    <tr>
+                        <td>Entrenamiento libre socios</td>
+                        <td>Lun – Dom</td>
+                        <td>07:00 – 23:00</td>
+                        <td>Solo socios habilitados</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Servicios -->
+        <div class="horarios-section fade-up">
+            <div class="horarios-section__title">Servicios Complementarios</div>
+            <table class="horarios-table">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Días</th>
+                        <th>Horario</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Restaurante</td>
+                        <td>Lun – Dom</td>
+                        <td>12:00 – 16:00 / 20:00 – 23:30</td>
+                        <td>Almuerzo y cena</td>
+                    </tr>
+                    <tr>
+                        <td>Gimnasio</td>
+                        <td>Lun – Sáb</td>
+                        <td>07:00 – 21:00</td>
+                        <td>Dom: 08:00 – 14:00</td>
+                    </tr>
+                    <tr>
+                        <td>Pilates</td>
+                        <td>Lun / Mié / Vie</td>
+                        <td>09:00 – 10:30</td>
+                        <td><span class="badge">Inscripción previa</span></td>
+                    </tr>
+                    <tr>
+                        <td>Yoga</td>
+                        <td>Mar / Jue</td>
+                        <td>18:00 – 19:30</td>
+                        <td><span class="badge">Inscripción previa</span></td>
+                    </tr>
+                    <tr>
+                        <td>Paddle</td>
+                        <td>Lun – Dom</td>
+                        <td>08:00 – 22:00</td>
+                        <td>Reserva previa recomendada</td>
+                    </tr>
+                    <tr>
+                        <td>Bridge</td>
+                        <td>Mar / Jue</td>
+                        <td>15:00 – 18:00</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Ajedrez</td>
+                        <td>Sáb</td>
+                        <td>14:00 – 17:00</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Nota al pie -->
+        <p class="fade-up"
+            style="font-size: 0.875rem; color: var(--color-muted); padding-top: var(--space-md); border-top: 1px solid rgba(28,28,26,0.08);">
+            Los horarios pueden estar sujetos a cambios por actividades especiales, torneos o fechas festivas. Para
+            consultas, contactate con la secretaría del club.
+        </p>
+
+    </main>
+
+    <!-- Footer -->
+    <footer
+        style="padding: var(--space-xl) var(--space-md); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem; border-top: 1px solid rgba(28,28,26,0.1);">
+        <div>
+            <div style="font-weight: var(--font-weight-medium); font-size: 1.5rem; margin-bottom: 4px;">El Médano</div>
+            <div style="font-size: 0.8rem; color: var(--color-muted); letter-spacing: 0.05em;">Desde 1943</div>
+        </div>
+        <ul style="display: flex; gap: var(--space-md);">
+            <li><a href="https://www.instagram.com/clubmedano/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.facebook.com/club.elmedano" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        </ul>
+    </footer>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+        </svg>
+    </a>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./js/app.js"></script>
+
+</body>
+
+</html>

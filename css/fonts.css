@@ -1,0 +1,28 @@
+/* Sohné Typography System (ASCII Safe) */
+
+/* Light (300) - For Hero Titles */
+@font-face {
+    font-family: 'Sohne-Light';
+    src: url('../Fonts/k-sohne-leicht-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Book / Regular (400) - For Subtitles and Body */
+@font-face {
+    font-family: 'Sohne-Book';
+    src: url('../Fonts/k-sohne-buch.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Medium (500) - For Navigation */
+@font-face {
+    font-family: 'Sohne-Medium';
+    src: url('../Fonts/k-sohne-kraftig-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}

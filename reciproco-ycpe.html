@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yacht Club Punta del Este — Clubs Recíprocos · El Médano</title>
+    <link href="https://api.fontshare.com" rel="preconnect">
+    <link rel="icon" type="image/png" href="./imagenes/Logo Medano.png">
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+        .page-hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: flex-end;
+            padding: var(--space-xl) var(--space-md);
+            padding-top: calc(var(--space-xl) * 2 + 96px);
+            position: relative;
+            overflow: hidden;
+            background-color: var(--color-text);
+        }
+
+        .page-hero__logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: var(--space-md);
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+            display: block;
+        }
+
+        .page-hero__content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero__label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(250, 249, 246, 0.5);
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+
+        .page-hero__sublabel {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .page-hero__title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: var(--font-weight-light);
+            color: var(--color-bg);
+            line-height: 1.05;
+        }
+
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .reciproco-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: var(--space-xl);
+            align-items: start;
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(28, 28, 26, 0.1);
+        }
+
+        .reciproco-logo-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .reciproco-logo-col img {
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+        }
+
+        .reciproco-label {
+            font-size: 0.75rem;
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text);
+            text-align: center;
+        }
+
+        .reciproco-info .vigencia {
+            font-size: 1rem;
+            color: var(--color-text);
+            margin-bottom: var(--space-md);
+        }
+
+        .reciproco-info .vigencia strong {
+            font-weight: var(--font-weight-medium);
+        }
+
+        .reciproco-info p {
+            font-size: 1rem;
+            color: var(--color-muted);
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: var(--space-md);
+        }
+
+        .reciproco-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid rgba(28, 28, 26, 0.08);
+        }
+
+        .reciproco-contact__item {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-sm);
+            font-size: 1rem;
+        }
+
+        .reciproco-contact__label {
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text);
+            min-width: 40px;
+        }
+
+        .reciproco-contact__value {
+            color: var(--color-muted);
+        }
+
+        .reciproco-contact__value a {
+            color: var(--color-text);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: var(--color-muted);
+            margin-bottom: var(--space-lg);
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--color-text);
+        }
+
+        @media (max-width: 768px) {
+            .reciproco-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo-container"><a href="index.html"><img src="./imagenes/Logo%20Medano.png" alt="Médano"
+                    style="height: 96px; width: auto; display: block; object-fit: contain;"></a></div>
+        <button class="mobile-toggle" aria-label="Menu" aria-expanded="false">
+            <svg class="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M4 6H20M4 12H20M4 18H20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display:none;">
+                <path d="M18 6L6 18M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+        <ul class="nav-links">
+            <li class="has-dropdown"><a href="club.html">Institucional</a>
+                <ul class="dropdown">
+                    <li><a href="club.html#clubs-reciprocos">Clubs recíprocos</a></li>
+                </ul>
+            </li>
+            <li><a href="horarios.html">Horarios</a></li>
+            <li class="has-dropdown"><a href="tenis.html">Tenis</a>
+                <ul class="dropdown">
+                    <li><a href="#">Torneos</a></li>
+                </ul>
+            </li>
+            <li class="has-dropdown"><a href="servicios.html">Servicios</a>
+                <ul class="dropdown">
+                    <li><a href="#">Restaurante</a></li>
+                </ul>
+            </li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+    <section class="page-hero">
+        <div class="page-hero__content">
+            <img class="page-hero__logo" src="./imagenes/INSTITUCIONAL/CLUBES RECIPROCOS/YCPE.png"
+                alt="Yacht Club Punta del Este">
+            <span class="page-hero__sublabel">Clubs Recíprocos</span>
+            <span class="page-hero__label">El Médano Tennis Club</span>
+            <h1 class="page-hero__title">Yacht Club<br>Punta del Este</h1>
+        </div>
+    </section>
+    <main class="page-content">
+        <a href="club.html#clubs-reciprocos" class="back-link">← Volver a Clubs Recíprocos</a>
+        <div class="reciproco-layout fade-up">
+            <div class="reciproco-logo-col">
+                <img src="./imagenes/INSTITUCIONAL/CLUBES RECIPROCOS/YCPE.png" alt="Yacht Club Punta del Este">
+                <div class="reciproco-label">Yacht Club Punta del Este</div>
+            </div>
+            <div class="reciproco-info">
+                <div class="vigencia"><strong>Vigencia</strong> – A confirmar</div>
+                <p>
+                    El mismo permite reservar y asistir al restaurante sin la presencia de un socio de dicho Club,
+                    aplicándose la tarifa de invitado.
+                </p>
+                <p>
+                    Para hacer uso del mismo se deberá solicitar a nuestra secretaría la carta de presentación, la cual
+                    será enviada vía e-mail a vuestro correo electrónico con copia a la secretaría del Club receptor.
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer
+        style="padding: var(--space-xl) var(--space-md); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem; border-top: 1px solid rgba(28,28,26,0.1);">
+        <div>
+            <div style="font-weight: var(--font-weight-medium); font-size: 1.5rem; margin-bottom: 4px;">El Médano</div>
+            <div style="font-size: 0.8rem; color: var(--color-muted); letter-spacing: 0.05em;">Desde 1943</div>
+        </div>
+        <ul style="display: flex; gap: var(--space-md);">
+            <li><a href="https://www.instagram.com/clubmedano/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.facebook.com/club.elmedano" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        </ul>
+    </footer>
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+        </svg></a>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
