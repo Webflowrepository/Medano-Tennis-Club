@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jockey Club de Buenos Aires — Clubs Recíprocos · El Médano</title>
+    <title>Paddle — El Médano Tennis Club</title>
     <link href="https://api.fontshare.com" rel="preconnect">
     <link rel="icon" type="image/png" href="./imagenes/Logo Medano.png">
     <link rel="stylesheet" href="./css/main.css">
@@ -16,7 +16,7 @@
             padding-top: calc(96px + var(--space-lg));
         }
 
-        .reciproco-layout {
+        .servicio-layout {
             display: grid;
             grid-template-columns: 220px 1fr;
             gap: var(--space-xl);
@@ -25,39 +25,28 @@
             border-top: 1px solid rgba(28, 28, 26, 0.1);
         }
 
-        .reciproco-logo-col {
+        .servicio-label-col {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: var(--space-md);
+            gap: 4px;
         }
 
-        .reciproco-logo-col img {
-            width: 160px;
-            height: 160px;
-            object-fit: contain;
-        }
-
-        .reciproco-label {
+        .servicio-tag {
             font-size: 0.75rem;
             font-weight: var(--font-weight-medium);
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            color: var(--color-muted);
+        }
+
+        .servicio-title {
+            font-size: 2rem;
+            font-weight: var(--font-weight-light);
             color: var(--color-text);
-            text-align: center;
+            line-height: 1.1;
         }
 
-        .reciproco-info .vigencia {
-            font-size: 1rem;
-            color: var(--color-text);
-            margin-bottom: var(--space-md);
-        }
-
-        .reciproco-info .vigencia strong {
-            font-weight: var(--font-weight-medium);
-        }
-
-        .reciproco-info p {
+        .servicio-info p {
             font-size: 1rem;
             color: var(--color-muted);
             line-height: 1.8;
@@ -65,7 +54,7 @@
             margin-bottom: var(--space-md);
         }
 
-        .reciproco-contact {
+        .servicio-details {
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -74,24 +63,24 @@
             border-top: 1px solid rgba(28, 28, 26, 0.08);
         }
 
-        .reciproco-contact__item {
+        .detail-item {
             display: flex;
             align-items: baseline;
             gap: var(--space-sm);
             font-size: 1rem;
         }
 
-        .reciproco-contact__label {
+        .detail-label {
             font-weight: var(--font-weight-medium);
             color: var(--color-text);
-            min-width: 40px;
+            min-width: 90px;
         }
 
-        .reciproco-contact__value {
+        .detail-value {
             color: var(--color-muted);
         }
 
-        .reciproco-contact__value a {
+        .detail-value a {
             color: var(--color-text);
             text-decoration: underline;
             text-underline-offset: 3px;
@@ -112,7 +101,7 @@
         }
 
         @media (max-width: 768px) {
-            .reciproco-layout {
+            .servicio-layout {
                 grid-template-columns: 1fr;
             }
         }
@@ -148,7 +137,15 @@
             </li>
             <li class="has-dropdown"><a href="servicios.html">Servicios</a>
                 <ul class="dropdown">
-                    <li><a href="#">Restaurante</a></li>
+                    <li><a href="https://drive.google.com/file/d/14ZWQT4-GEa2u9OkBewZb8yuzyr5z1ufx/view" target="_blank"
+                            rel="noopener noreferrer">Restaurante</a></li>
+                    <li><a href="kids.html">Kids</a></li>
+                    <li><a href="gimnasio.html">Gimnasio</a></li>
+                    <li><a href="pilates.html">Pilates</a></li>
+                    <li><a href="yoga.html">Yoga</a></li>
+                    <li><a href="paddle.html">Paddle</a></li>
+                    <li><a href="bridge.html">Bridge</a></li>
+                    <li><a href="ajedrez.html">Ajedrez</a></li>
                 </ul>
             </li>
             <li><a href="contacto.html">Contacto</a></li>
@@ -156,36 +153,28 @@
     </nav>
 
     <main class="page-content">
-        <a href="club.html#clubs-reciprocos" class="back-link">← Volver a Clubs Recíprocos</a>
-        <div class="reciproco-layout fade-up">
-            <div class="reciproco-logo-col">
-                <img src="./imagenes/INSTITUCIONAL/CLUBES RECIPROCOS/jockey-club.png" alt="Jockey Club">
-                <h1 class="reciproco-label"
-                    style="margin:0; font-size:1.5rem; text-transform:none; letter-spacing:normal;">Jockey Club<br>de
-                    Buenos Aires</h1>
+        <a href="servicios.html" class="back-link">← Volver a Servicios</a>
+        <div class="servicio-layout fade-up">
+            <div class="servicio-label-col">
+                <span class="servicio-tag">Servicios</span>
+                <div class="servicio-title">Paddle</div>
             </div>
-            <div class="reciproco-info">
-                <div class="vigencia"><strong>Vigencia</strong> – Todo el año</div>
-                <p>
-                    Los socios del Club de Tennis El Médano no residentes en la ciudad de Buenos Aires y/o en la
-                    Provincia de Buenos Aires, Argentina, podrán utilizar las instalaciones de la Sede Social de la
-                    Avda. Alvear del Jockey Club durante un máximo de 30 días en el año.
-                </p>
-                <div class="reciproco-contact">
-                    <div class="reciproco-contact__item">
-                        <span class="reciproco-contact__label">Mail</span>
-                        <span class="reciproco-contact__value">
-                            <a href="mailto:info@jockeyclub.org.ar">info@jockeyclub.org.ar</a>
-                        </span>
-                    </div>
-                    <div class="reciproco-contact__item">
-                        <span class="reciproco-contact__label">Tel</span>
-                        <span class="reciproco-contact__value">(+54) 11-48150022</span>
+            <div class="servicio-info">
+                <p>El club suma una nueva cancha de pádel para seguir ampliando el espacio de juego y entrenamiento.
+                    Diseñada con materiales modernos y superficie de alta calidad, permite disfrutar partidos más
+                    dinámicos y cómodos. Una nueva oportunidad para jugar, entrenar y compartir este deporte en mejores
+                    condiciones.</p>
+                <div class="servicio-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Inscripciones</span>
+                        <span class="detail-value"><a href="https://wa.me/59898908062" target="_blank">+598 98
+                                908062</a></span>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
     <footer
         style="padding: var(--space-xl) var(--space-md); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem; border-top: 1px solid rgba(28,28,26,0.1);">
         <div>
