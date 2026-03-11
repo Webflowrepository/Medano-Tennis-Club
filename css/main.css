@@ -175,14 +175,36 @@ html.lenis body {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: var(--space-md);
+    padding: 24px var(--space-md);
     z-index: 100;
     mix-blend-mode: difference;
     color: #FAF9F6;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    transition: mix-blend-mode 0.3s var(--ease-out), color 0.3s var(--ease-out), background-color 0.3s var(--ease-out);
+    align-items: center;
+    transition: mix-blend-mode 0.3s var(--ease-out), color 0.3s var(--ease-out), background-color 0.3s var(--ease-out), padding 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.nav-logo {
+    height: 64px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transition: height 0.3s var(--ease-out);
+}
+
+.navbar.scrolled {
+    background-color: var(--color-bg);
+    mix-blend-mode: normal;
+    color: var(--color-text);
+    padding: 12px var(--space-md);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.navbar.scrolled .nav-logo {
+    height: 52px;
+    filter: brightness(0) invert(0);
+    /* Fuerza a que el Logo PNG se vea NEGRO */
 }
 
 .nav-links {

@@ -41,7 +41,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Navbar Scrolled State - Mobile Only Toggle was incorrectly restricting Desktop
+  }
+
+  // Navbar background scroll state for all pages
+  if (navbar) {
+    const heroSection = document.querySelector('.hero') || document.querySelector('.page-hero');
+    if (heroSection) {
+      window.addEventListener('scroll', () => {
+        // Switch to solid background before reaching the end of the hero image
+        const triggerHeight = heroSection.offsetHeight - 90;
+        if (window.scrollY > triggerHeight) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    } else {
+      // If there's no hero section (e.g. some flat page), always be scrolled
+      navbar.classList.add('scrolled');
+    }
   }
 
   // Hero Text Animation (Fade-in suave similar a la imagen)

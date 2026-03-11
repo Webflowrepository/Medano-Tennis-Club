@@ -9,7 +9,7 @@
     <link href="https://api.fontshare.com" rel="preconnect">
     <link rel="icon" type="image/png" href="./imagenes/Logo Medano.png">
     <link rel="preload" as="image" href="./imagenes/INICIO/IMG_0664.jpg">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/main.css?v=3">
 </head>
 
 <body>
@@ -19,8 +19,7 @@
     <nav class="navbar">
         <div class="logo-container">
             <!-- El mix-blend-mode global de la nav invertirá también este logo, asumiendo que es PNG transparente. Si causa problemas de legibilidad, lo excluiremos en el CSS luego -->
-            <img src="./imagenes/Logo%20Medano.png" alt="Médano Tennis Club Logo"
-                style="height: 96px; width: auto; display: block; object-fit: contain;">
+            <img src="./imagenes/Logo%20Medano.png" alt="Médano Tennis Club Logo" class="nav-logo">
         </div>
 
         <button class="mobile-toggle" aria-label="Menu" aria-expanded="false">
@@ -60,8 +59,7 @@
             <li class="has-dropdown">
                 <a href="servicios.html">Servicios</a>
                 <ul class="dropdown">
-                    <li><a href="https://drive.google.com/file/d/14ZWQT4-GEa2u9OkBewZb8yuzyr5z1ufx/view" target="_blank"
-                            rel="noopener noreferrer">Restaurante</a></li>
+                    <li><a href="restaurante.html">Restaurante</a></li>
                     <li><a href="kids.html">Kids</a></li>
                     <li><a href="gimnasio.html">Gimnasio</a></li>
                     <li><a href="pilates.html">Pilates</a></li>
@@ -113,7 +111,7 @@
                 Club</span>
             <h2
                 style="font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1; color: var(--color-text); margin-bottom: var(--space-md);">
-                Más de 75 años de tenis, tradición y excelencia<br>
+                Más de 80 años de tenis, tradición y excelencia<br>
                 <span
                     style="display: block; font-style: italic; font-weight: var(--font-weight-light); margin-top: var(--space-xs); font-size: 0.8em; color: var(--color-muted);">Pauci
                     sed boni</span>
@@ -122,10 +120,6 @@
                 style="font-size: clamp(1.125rem, 1.2vw, 1.25rem); color: var(--color-muted); margin-bottom: var(--space-sm);">
                 Uno de los clubes más tradicionales de Uruguay. Ubicado en el corazón de San Rafael, ha sido testigo de
                 generaciones de tenistas y encuentros memorables.
-            </p>
-            <p style="font-size: clamp(1.125rem, 1.2vw, 1.25rem); color: var(--color-muted);">
-                Con el lema “Pauci sed boni” (pocos pero buenos), construimos una comunidad donde el deporte y los
-                valores van de la mano.
             </p>
 
             <a href="club.html"
@@ -138,9 +132,6 @@
     <section class="section-servicios fade-up"
         style="padding: var(--space-xl) var(--space-md); background-color: var(--color-bg); color: var(--color-text); position: relative;">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <span
-                style="font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); font-weight: var(--font-weight-medium); margin-bottom: var(--space-lg); display: block;">Nuestros
-                Espacios</span>
 
             <ul class="services-list" style="display: flex; flex-direction: column; gap: var(--space-sm);">
                 <li class="service-item"
@@ -196,7 +187,8 @@
     <footer
         style="position: relative; padding: var(--space-xl) var(--space-md); display: flex; justify-content: space-between; align-items: center; font-size: 0.875rem;">
         <div>
-            <div style="font-weight: var(--font-weight-medium); font-size: 1.5rem; margin-bottom: 4px;">El Médano</div>
+            <div style="font-weight: var(--font-weight-medium); font-size: 1.5rem; margin-bottom: 4px;">Medano Tennis
+                Club</div>
             <div style="font-size: 0.8rem; color: var(--color-muted); letter-spacing: 0.05em;">
                 Desde 1943</div>
         </div>
@@ -206,9 +198,11 @@
             <li><a href="https://www.facebook.com/club.elmedano" target="_blank" rel="noopener noreferrer">Facebook</a>
             </li>
         </ul>
-    
-    <div style="position: absolute; bottom: 8px; right: var(--space-md); font-size: 0.6rem; color: var(--color-muted); opacity: 0.5; letter-spacing: 0.1em; text-transform: uppercase;">Designed by <a href="https://nexarhub.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; font-weight: var(--font-weight-regular); transition: opacity 0.3s; opacity: 0.7;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">Nexar Hub</a></div>
-</footer>
+
+        <div style="position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; font-size: 0.6rem; color: var(--color-muted); opacity: 0.5; letter-spacing: 0.1em; text-transform: uppercase;">Designed by <a href="https://nexarhub.com" target="_blank" rel="noopener noreferrer"
+                style="color: inherit; text-decoration: none; font-weight: var(--font-weight-regular); transition: opacity 0.3s; opacity: 0.7;"
+                onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">Nexar Hub</a></div>
+    </footer>
 
     <!-- Librerías Externas (Cargadas de esta forma para permitir "doble check" local) -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -217,10 +211,10 @@
     <script src="https://unpkg.com/split-type"></script>
 
     <!-- Funcionalidad JS -->
-    <script src="./js/app.js"></script>
+    <script src="./js/app.js?v=4?v=4"></script>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+    <a href="https://wa.me/59898908062" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"
             stroke-linecap="round" stroke-linejoin="round">
